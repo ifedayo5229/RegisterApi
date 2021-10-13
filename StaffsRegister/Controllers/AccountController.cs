@@ -3,11 +3,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using register.Entities;
-using register.Models;
-using register.Services.Interfaces;
+using StaffsRegister.Entities;
+using StaffsRegister.Models;
+using StaffsRegister.Services.Interfaces;
 
-namespace register.Controllers
+namespace StaffsRegister.Controllers
 {
  public class AccountController : Controller
     {
@@ -54,26 +54,26 @@ namespace register.Controllers
                 
            };
 
-                var result = await _userManager.CreateAsync(user, model.Password);
+        //         var result = await _userManager.CreateAsync(user);
 
-                if (result.Succeeded)
-                {
-                    await _signInManager.SignInAsync(user, isPersistent: false);
+        //         if (result.Succeeded)
+        //         {
+        //             await _signInManager.SignInAsync(user, isPersistent: false);
 
-                    return RedirectToAction("index", "Home");
-                }
+        //             return RedirectToAction("index", "Home");
+        //         }
 
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
+        //         foreach (var error in result.Errors)
+        //         {
+        //             ModelState.AddModelError("", error.Description);
+        //         }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+        //         ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
 
-            }
-            return View(model);
+        //     }
+        //     return View(model);
 
-        }
+        // }
          private decimal Tax(decimal SalaryAmount , int Percentage)
         {
             decimal tax= Percentage/100*SalaryAmount;
@@ -82,47 +82,48 @@ namespace register.Controllers
 
 
 
-        [HttpGet]
-        [AllowAnonymous]
-        public IActionResult Login()
-        {
+        // [HttpGet]
+        // [AllowAnonymous]
+        // public IActionResult Login()
+        // {
 
-            //var branch = new Branch
-            //{
-            //    branchName = "Regie",
-            //    address = "Naval"
+        //     //var branch = new Branch
+        //     //{
+        //     //    branchName = "Regie",
+        //     //    address = "Naval"
 
-            //};
-            //branchContext.Branch.Add(branch);
-            //branchContext.SaveChanges();
+        //     //};
+        //     //branchContext.Branch.Add(branch);
+        //     //branchContext.SaveChanges();
 
-            return View();
-        }
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult> Login(LoginViewModel user)
-        {
-            if (ModelState.IsValid)
-            {
-                var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, user.RememberMe, false);
+        //     return View();
+        // }
+        // [HttpPost]
+        // [AllowAnonymous]
+        // public async Task<IActionResult> Login(LoginViewModel user)
+        // {
+        //     if (ModelState.IsValid)
+        //     {
+        //         var result = await _signInManager.PasswordSignInAsync(user.Email, user.Password, user.RememberMe, false);
 
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Index", "Home");
-                }
+        //         if (result.Succeeded)
+        //         {
+        //             return RedirectToAction("Index", "Home");
+        //         }
 
-                ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
+        //         ModelState.AddModelError(string.Empty, "Invalid Login Attempt");
 
-            }
-            return View(user);
-        }
+        //     }
+        //     return View(user);
+        // }
 
-        [AllowAnonymous]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
+        // [AllowAnonymous]
+        // public async Task<IActionResult> Logout()
+        // {
+        //     await _signInManager.SignOutAsync();
 
-            return RedirectToAction("Login");
-        }
+        //     return RedirectToAction("Login");
+        // }
     }
 }
+    }

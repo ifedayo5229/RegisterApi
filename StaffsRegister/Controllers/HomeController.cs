@@ -5,10 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using register.Models;
+using  StaffsRegister.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace register.Controllers
+namespace  StaffsRegister.Controllers
 {
     public class HomeController : Controller
     {

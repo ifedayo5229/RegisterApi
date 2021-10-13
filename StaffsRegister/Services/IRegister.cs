@@ -1,6 +1,6 @@
-using register.Models;
+using StaffsRegister.Models;
 
-namespace register.Services.Interfaces
+namespace StaffsRegister.Services.Interfaces
 {
     public interface IRegister
     {

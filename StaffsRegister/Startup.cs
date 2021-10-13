@@ -8,6 +8,11 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using  StaffsRegister.Models;
+using  StaffsRegister.Services.Interfaces;
+using  StaffsRegister.Services;
+using  StaffsRegister.Entities;
 
 namespace StaffsRegister
 {
@@ -26,9 +31,9 @@ namespace StaffsRegister
 
             
             string connectionString = Configuration.GetConnectionString("StaffSDb");
-            services.AddDbContext<AppDBContext>(c => c.UseSqlServer(connectionString));
+            services.AddDbContext<StaffSDbContext>(c => c.UseSqlServer(connectionString));
             services.AddRazorPages();
-            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<AppDBContext>();
+            
             services.AddScoped<IRegister,Registration >();
             services.AddControllersWithViews();
         }

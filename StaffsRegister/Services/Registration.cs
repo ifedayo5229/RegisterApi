@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
-using register.Entities;
-using register.Models;
-using register.Services.Interfaces;
+using StaffsRegister.Entities;
+using StaffsRegister.Models;
+using StaffsRegister.Services.Interfaces;
 
-namespace register.Services
+namespace StaffsRegister.Services
 {
     public class Registration : IRegister
     {
 
-           private readonly  AppDBContext  _options;
+           private readonly  StaffSDbContext  _options;
 
-        public Registration( AppDBContext  options)
+        public Registration( StaffSDbContext options)
         {
             _options = options; 
         }
@@ -25,9 +25,9 @@ namespace register.Services
 
            var entry = new  ApplicationUser
            {
-                GrossIncome=GrossIncome,
-                NetIncome=netSalary,
-                Salary=model.Salary,
+                GrossIncome=GrossIncome.ToString(),
+                NetIncome=netSalary.ToString(),
+                Salary=model.Salary.ToString(),
                 FirstName=model.FirstName,
                 LastName=model.LastName,
                 Email=model.Email,
